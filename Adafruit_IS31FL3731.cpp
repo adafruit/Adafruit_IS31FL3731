@@ -15,8 +15,10 @@ Adafruit_IS31FL3731::Adafruit_IS31FL3731(uint8_t x, uint8_t y) : Adafruit_GFX(x,
 Adafruit_IS31FL3731_Wing::Adafruit_IS31FL3731_Wing(void) : Adafruit_IS31FL3731(15, 7) {
 }
 
-boolean Adafruit_IS31FL3731::begin(uint8_t addr) {
+boolean Adafruit_IS31FL3731::begin(uint8_t addr, uint32_t wirespeed) {
+  
   Wire.begin();
+  Wire.setClock(wirespeed);
 
   _i2caddr = addr;
   _frame = 0;

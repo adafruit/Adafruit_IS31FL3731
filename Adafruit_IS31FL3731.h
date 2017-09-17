@@ -7,6 +7,9 @@
 
 #define ISSI_ADDR_DEFAULT 0x74
 
+#define ISSI_WIRE_SPEED_DEFAULT 100000
+#define ISSI_WIRE_SPEED_HI 400000
+
 #define ISSI_REG_CONFIG  0x00
 #define ISSI_REG_CONFIG_PICTUREMODE 0x00
 #define ISSI_REG_CONFIG_AUTOPLAYMODE 0x08
@@ -28,7 +31,7 @@
 class Adafruit_IS31FL3731 : public Adafruit_GFX {
  public:
   Adafruit_IS31FL3731(uint8_t x=16, uint8_t y=9); 
-  boolean begin(uint8_t addr = ISSI_ADDR_DEFAULT);
+  boolean begin(uint8_t addr = ISSI_ADDR_DEFAULT, uint32_t wirespeed = ISSI_WIRE_SPEED_DEFAULT);
   void drawPixel(int16_t x, int16_t y, uint16_t color);
   void clear(void);
 

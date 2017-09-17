@@ -20,6 +20,14 @@ void setup() {
     while (1);
   }
   Serial.println("IS31 found!");
+
+  /* 
+  if (! ledmatrix.begin(ISSI_ADDR_DEFAULT, ISSI_WIRE_SPEED_HI)) {
+    Serial.println("IS31 not found under given address, or high speed setting not available on your platform.");
+    while (1);
+  }
+  Serial.println("IS31 found! High Speed enabled (faster refresh)");
+  */
 }
 
 void loop() {
