@@ -15,6 +15,8 @@ void setup() {
     Serial.println("IS31 not found");
     while (1);
   }
+  //Set I2C clock to 400KHz to get smooth animations (default is 100KHz)
+  Wire.setClock(400000);
   Serial.println("IS31 Found!");
   
   ledmatrix.setTextWrap(false);
