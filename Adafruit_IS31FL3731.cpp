@@ -179,7 +179,7 @@ uint8_t  Adafruit_IS31FL3731::readRegister8(uint8_t bank, uint8_t reg) {
  Wire.endTransmission();
 
  Wire.beginTransmission(_i2caddr);
- Wire.requestFrom(_i2caddr, (byte)1);
+ Wire.requestFrom(_i2caddr, (size_t)1);
  x = Wire.read();
  Wire.endTransmission();
 
