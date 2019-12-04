@@ -1,4 +1,4 @@
-# Adafruit_IS31FL3731
+# Adafruit_IS31FL3731 [![Build Status](https://travis-ci.com/adafruit/Adafruit_IS31FL373.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_IS31FL373)
 <!-- START COMPATIBILITY TABLE -->
 
 ## Compatibility

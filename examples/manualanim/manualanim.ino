@@ -23,8 +23,8 @@ void setup() {
 
   // fill all 8 frames with some text
   for (uint8_t frame = 0; frame < 8; frame++) {
-    ledmatrix.clear();
     ledmatrix.setFrame(frame);
+    ledmatrix.clear();
     ledmatrix.setCursor(0,0);
     ledmatrix.write('a'+frame*3);
     ledmatrix.write('b'+frame*3);
