@@ -56,6 +56,9 @@ protected:
 /**************************************************************************/
 class Adafruit_IS31FL3731_Wing : public Adafruit_IS31FL3731 {
 public:
+  static const uint8_t WIDTH = 15;
+  static const uint8_t HEIGHT = 7;
+  static const uint8_t FRAMES = 8;
   Adafruit_IS31FL3731_Wing(void);
   void drawPixel(int16_t x, int16_t y, uint16_t color);
 };
