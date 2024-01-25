@@ -19,6 +19,15 @@
 
 Adafruit_IS31FL3731::Adafruit_IS31FL3731(uint8_t width, uint8_t height)
     : Adafruit_GFX(width, height) {}
+	
+/**************************************************************************/
+/*!
+    @brief Constructor for Scroll pHAT HD version (17x7 LEDs)
+*/
+/**************************************************************************/	
+	
+Adafruit_IS31FL3731_ScrPhHD::Adafruit_IS31FL3731_ScrPhHD(void) : Adafruit_IS31FL3731(17, 7) {
+}
 
 /**************************************************************************/
 /*!
@@ -151,6 +160,52 @@ void Adafruit_IS31FL3731_Wing::drawPixel(int16_t x, int16_t y, uint16_t color) {
     color = 255; // PWM 8bit max
 
   setLEDPWM(x + y * 16, color, _frame);
+  return;
+}
+
+/**************************************************************************/
+/*!
+    @brief Adafruit GFX low level accesssor - sets a 8-bit PWM pixel value
+    handles rotation and pixel arrangement, unlike setLEDPWM
+    @param x The x position, starting with 0 for left-most side
+    @param y The y position, starting with 0 for top-most side
+    @param color Despite being a 16-bit value, takes 0 (off) to 255 (max on)
+*/
+/**************************************************************************/
+void Adafruit_IS31FL3731_ScrPhHD::drawPixel(int16_t x, int16_t y, uint16_t color) {
+ // check rotation, move pixel around if necessary
+  switch (getRotation()) {
+  case 0:
+	y = 7 - y - 1;
+	break;
+  case 1:
+    _swap_int16_t(x, y);
+    x = 17 - x - 1;
+    break;
+  case 2:
+    x = 17 - x - 1;
+    y = 7 - y - 1;
+    break;
+  case 3:
+    _swap_int16_t(x, y);
+    y = 9 - y - 1;
+    break;
+  }
+
+  if ((x < 0) || (x >= 18) || (y < 0) || (y >= 7)) return;
+
+  if (x > 8) {
+    x = x - 8;
+    y = 6 - (y + 8);
+  } else {
+    x = 8 - x;
+  }
+
+  _swap_int16_t(x, y);
+ 
+  if (color > 255) color = 255; // PWM 8bit max
+
+  setLEDPWM(x + y*16, color, _frame);
   return;
 }
 
